@@ -1,4 +1,4 @@
-// Assignment Code
+//variable for the button so it can listen for the click event
 var generateBtn = document.querySelector("#generate");
 
 //all the possible character sets
@@ -20,21 +20,19 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 function generatePassword(){
-  let password = "";  //"Your Secure Password" 
-
   //get input for the length of the password
   let pwordLength = getLength();
-
+  
   //get the character list for the password
   let charList = getCharList()
-
+  
   while (charList.length === 0){
     alert("The password must include at least one of these charsets! try again")
     charList = getCharList()
   }
-
-  console.log(pwordLength + ", " + charList)
   
+  //now that we have the length and character set, build the password!
+  let password = buildPassword(pwordLength, charList)
   
   return password
 }
@@ -78,6 +76,24 @@ function getCharList(){
 
   return charList
 };
+
+//builds the password based on the given parameters
+function buildPassword(plength, charset){
+  let completedPassword = ""
+
+  for (var i = 0; i < plength; i++){
+    //get a charset at random
+    var charsetID = charset[Math.floor(Math.random() * charset.length)]
+
+    //select a character from the charset
+    var char = charsetID[Math.floor(Math.random() * charsetID.length)]
+
+    //append it to the password
+    completedPassword += char
+  }
+
+  return completedPassword
+}
 
 //spice up css if time
 //PSEUDOCODE:
