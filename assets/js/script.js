@@ -57,6 +57,19 @@ function getLength(){
   return pwordLength;
 };
 
+//finish and submit the password generator - 1st
+    //reset on page reload (maybe)
+    //README
+    //any css touchups I see fit
+
+//design the quiz page (functionality can wait until Tuesday)
+    //framework it 
+    //see project README
+    //add simple css (unless advanced works better)
+    //even add event listeners and set up sample questions
+
+//fool around with coffee game (or either of the 2 placeholders) - 2nd
+
 //gets the list of usable characters from the user (lowercase, uppercase, digits, special characters)
 function getCharList(){
   //this will return with the arrays of each selected character set
