@@ -61,20 +61,17 @@ function getLength(){
 function getCharList(){
   //this will return with the arrays of each selected character set
   let charList = [lowerCaseLetters, upperCaseLetters, numericCharacters, specialCharacters];
+  let userSelections = []
   const options = ["lower case letters", "upper case letters", "numbers", "special characters"];
-  //a counter for the options list, since 'i' might decrement
-  var j = 0;
   for (var i = 0; i < charList.length; i++){
     //for each set the user will decide which ones to include
-    let response = confirm("Click ok if you would like to have " + options[j] + " in your password. Click cancel if not.")
-    if (!response){
-      charList.splice(i, 1);
-      i--
+    let response = confirm("Click ok if you would like to have " + options[i] + " in your password. Click cancel if not.")
+    if (response){
+      userSelections = userSelections.concat(charList[i])
     }
-    j++
   }
 
-  return charList
+  return userSelections
 };
 
 //builds the password based on the given parameters
@@ -82,11 +79,9 @@ function buildPassword(plength, charset){
   let completedPassword = ""
 
   for (var i = 0; i < plength; i++){
-    //get a charset at random
-    var charsetID = charset[Math.floor(Math.random() * charset.length)]
 
     //select a character from the charset
-    var char = charsetID[Math.floor(Math.random() * charsetID.length)]
+    var char = charset[Math.floor(Math.random() * charset.length)]
 
     //append it to the password
     completedPassword += char
